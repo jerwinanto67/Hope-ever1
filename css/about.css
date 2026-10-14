@@ -1,0 +1,486 @@
+/* ==========================================================================
+   ABOUT HERO TEXT COLOR FIX
+   ========================================================================== */
+.about-hero {
+  background: linear-gradient(130deg, #0b4f3e 0%, #0f6e56 45%, #1a8a6c 100%);
+  color: #fff;
+  border-bottom: 1px solid var(--c-border);
+}
+
+/* Force the main heading to be bright white like the home page */
+.about-hero h1 {
+  color: #fff !important;
+}
+
+/* Force the descriptive text to use the same clean, semi-transparent white */
+.about-hero p:not(.section-subtitle) {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.about-hero .container {
+  padding: 3.5rem 0;
+}
+
+/* ==========================================================================
+   TEAM INTERACTIVE TABS SYSTEM (PURE CSS)
+   ========================================================================== */
+
+/* TEAM SECTION */
+
+.team-block {
+  margin-top: 1.5rem;
+  padding: 1.2rem;
+  border-radius: 22px;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Different colors for each section */
+
+.team-block:nth-of-type(1) {
+  background: #eef4ec; /* soft green */
+}
+
+.team-block:nth-of-type(2) {
+  background: #f4efe6; /* sand */
+}
+
+.team-block:nth-of-type(3) {
+  background: #f3ede7; /* warm beige */
+}
+
+/* SECTION TITLES */
+
+.team-block-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.9rem;
+  color: #184d3b;
+  position: relative;
+  padding-bottom: 0.4rem;
+}
+
+.team-block-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 90px;
+  height: 3px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #184d3b, #b08968);
+}
+
+/* GRID */
+
+.simple-team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.7rem; /* reduced spacing */
+}
+
+/* CARD */
+
+.simple-member-card {
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 0.9rem 0.7rem;
+  border: 1px solid rgba(0,0,0,0.05);
+  text-align: center;
+  transition: all 0.28s ease;
+  min-height: 100px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.simple-member-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 8px 22px rgba(0,0,0,0.08),
+    0 2px 6px rgba(24,77,59,0.08);
+}
+
+/* NAME */
+
+.simple-member-card h4 {
+  margin-bottom: 0.3rem;
+  color: #184d3b;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* ROLE */
+
+.simple-member-card p {
+  color: #7a5c3e;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  .team-block {
+    padding: 0.9rem;
+  }
+
+  .simple-team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+
+  .team-block-title {
+    font-size: 1.3rem;
+  }
+
+  .simple-member-card {
+    min-height: 85px;
+    padding: 0.7rem 0.5rem;
+  }
+
+  .simple-member-card h4 {
+    font-size: 0.85rem;
+  }
+
+}
+
+.team-tabs-container {
+  width: 100%;
+  margin-top: .5rem;
+}
+
+/* Hide the native radio buttons completely */
+.tab-switch {
+  display: none;
+}
+
+/* Tab Label Navigation Bar Container */
+.tab-labels {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--c-border, #e2e8f0);
+  padding-bottom: 1rem;
+}
+
+/* Base style for clickable group headers */
+.tab-label {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #64748b; /* Muted gray for inactive tabs */
+  cursor: pointer;
+  padding: 0.6rem 1.2rem;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+}
+
+.tab-label:hover {
+  color: #0b4f3e; /* Accent green on hover */
+  background-color: rgba(11, 79, 62, 0.05);
+}
+
+/* Hide all tab contents by default */
+.tab-content {
+  display: none;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* ==========================================================================
+   TAB LOGIC MECHANICS (When checked, highlight navigation and show panel)
+   ========================================================================== */
+#tab-board:checked ~ .tab-labels .label-board,
+#tab-advisory:checked ~ .tab-labels .label-advisory,
+#tab-consultants:checked ~ .tab-labels .label-consultants {
+  color: #fff;
+  background-color: #0b4f3e; /* Highlights selected tab with primary deep green */
+  font-weight: 700;
+}
+
+#tab-board:checked ~ .content-board,
+#tab-advisory:checked ~ .content-advisory,
+#tab-consultants:checked ~ .content-consultants {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   MEMBER PANEL CARDS GRID
+   ========================================================================== */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+}
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.2rem 1.5rem 2rem 1.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.member-avatar {
+  font-size: 3rem;
+  background-color: #f1f5f9;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-bottom: 1.2rem;
+  border: 1px solid var(--c-border, #e2e8f0);
+}
+
+.team-card h3 {
+  font-size: 1.25rem;
+  margin: 0 0 0.4rem 0;
+  color: #09670b;
+}
+
+.member-role {
+  font-size: 0.95rem;
+  color: #0f6e56; /* Uses site green variant for roles */
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Responsive adjustment for small viewports */
+@media (max-width: 640px) {
+  .tab-labels {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    border-bottom: none;
+  }
+  .tab-label {
+    text-align: center;
+    border: 1px solid var(--c-border, #e2e8f0);
+  }
+}
+
+.district-map-wrap {
+  background: #fff;
+  border-radius: var(--radius);
+  border: 1px solid var(--c-border);
+  padding: 1.5rem;
+}
+
+.map-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.map-container {
+  flex: 0 0 auto;
+  padding: 8px;
+}
+
+
+.district-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-content: center;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.map-svg {
+  width: 350px;
+  display: block;
+}
+
+
+@media (max-width: 600px) {
+  .map-layout {
+    flex-direction: column;
+  }
+  .map-svg {
+    width: 100%;
+    max-width: 300px;
+    margin-inline: auto;
+  }
+}
+
+.chip {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  border: 1.5px solid #0f6e56;
+  color: #0f6e56;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.chip:hover {
+  background: #1a6d58;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.chip.active {
+  background: #bd7824;
+  border-color: #d4872a;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.recognition-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.certificate-card {
+  padding: 0.9rem;
+}
+
+.certificate-card img {
+  border-radius: 10px;
+  border: 1px solid var(--c-border);
+  margin-bottom: 0.7rem;
+}
+
+.note {
+  border-left: 4px solid var(--c-accent);
+  padding: 0.9rem;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.partner-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.partner-table th,
+.partner-table td {
+  padding: 0.8rem;
+  border-bottom: 1px solid var(--c-border);
+  border-right: 1px solid var(--c-border);
+  text-align: left;
+  font-size: 0.93rem;
+  vertical-align: middle;
+}
+
+.partner-table th:last-child,
+.partner-table td:last-child {
+  border-right: none;
+}
+
+.partner-table th {
+  background: #f7f2ea;
+  color: var(--c-primary-strong);
+}
+
+.partner-logo-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 45px;
+  padding: 4px;
+  background: #fff;
+  border: 1px solid var(--c-border);
+  border-radius: 6px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.partner-logo-box:hover {
+  transform: translateY(-2px);
+  border-color: var(--c-accent);
+  box-shadow: 0 4px 8px rgba(15, 110, 86, 0.1);
+}
+
+.partner-logo-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+
+@media (max-width: 900px) {
+  .team-grid,
+  .recognition-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.district-map-img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.district-sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* District Details Card Styles */
+.district-details-card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-primary);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-soft);
+  animation: slideInUpDetails 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideInUpDetails {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.details-header {
+  margin-bottom: 0.5rem;
+}
+
+.details-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--c-primary-strong);
+  font-family: var(--ff-heading);
+}
+
+#details-district-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--c-muted);
+  margin: 0;
+}
