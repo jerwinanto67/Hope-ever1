@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.hopeeverfoundation.org/</loc></url>
-  <url><loc>https://www.hopeeverfoundation.org/about.html</loc></url>
-  <url><loc>https://www.hopeeverfoundation.org/projects.html</loc></url>
-  <url><loc>https://www.hopeeverfoundation.org/programs.html</loc></url>
-  <url><loc>https://www.hopeeverfoundation.org/gallery.html</loc></url>
-  <url><loc>https://www.hopeeverfoundation.org/contact.html</loc></url>
+  <url><loc>https://hopeever.org/</loc></url>
+  <url><loc>https://hopeever.org/about.html</loc></url>
+  <url><loc>https://hopeever.org/projects.html</loc></url>
+  <url><loc>https://hopeever.org/programs.html</loc></url>
+  <url><loc>https://hopeever.org/gallery.html</loc></url>
+  <url><loc>https://hopeever.org/contact.html</loc></url>
+  <url><loc>https://hopeever.org/get-involved.html</loc></url>
 </urlset>

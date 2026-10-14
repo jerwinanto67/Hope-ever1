@@ -46,17 +46,12 @@
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: var(--ff-body);
       background-color: var(--background);
       color: var(--text-primary);
       line-height: 1.7;
     }
 
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: auto;
-    }
 
     /* =====================================================
        HERO SECTION
@@ -71,10 +66,10 @@
 
       background:
         linear-gradient(
-          rgba(0, 0, 0, 0.55),
-          rgba(0, 0, 0, 0.55)
+          rgba(0, 0, 0, 0.15),
+          rgba(0, 0, 0, 0.15)
         ),
-        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1800&auto=format&fit=crop");
+        url("../assets/images/gallery/St_Joseph_high_school_Jawathu_Hills.jpeg");
 
       background-size: cover;
       background-position: center;
@@ -305,10 +300,10 @@
       z-index: 0;
       pointer-events: none;
       background: linear-gradient(
-        135deg,
-        rgba(3, 24, 18, 0.82) 0%,
-        rgba(8, 52, 40, 0.72) 45%,
-        rgba(0, 0, 0, 0.78) 100%
+        90deg,
+        rgba(3, 24, 18, 0.86) 0%,
+        rgba(8, 52, 40, 0.62) 50%,
+        rgba(0, 0, 0, 0.2) 100%
       );
     }
 
@@ -401,6 +396,7 @@
         <a href="../projects.html" data-nav="projects">Projects</a>
         <a href="../programs.html" data-nav="programs">Programs & Initiatives</a>
         <a href="../gallery.html" data-nav="gallery">Gallery</a>
+        <a href="../get-involved.html" data-nav="involved">Get Involved</a>
         <a href="../contact.html" data-nav="contact">Contact Us</a>
       </nav>
 
@@ -707,8 +703,8 @@
 
   </footer>
 
-  <script src="../js/navbar.js"></script>
-  <script src="../js/main.js"></script>
+  <script src="../js/navbar.js" defer></script>
+  <script src="../js/main.js" defer></script>
 
 </body>
 </html>

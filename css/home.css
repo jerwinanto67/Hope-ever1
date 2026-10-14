@@ -35,7 +35,7 @@
   grid-template-columns: 1fr .8fr; /* Increased by 15% from 0.9fr */
   gap: .2rem;
   align-items: center;
-  padding: 3.6rem 0;
+  padding: 4.5rem 0;
 }
 
 .hero h1 {
@@ -72,11 +72,14 @@
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 1.5s ease-in-out;
+  transform: scale(1);
+  transition: opacity 1.5s ease-in-out, transform 7s ease-out;
 }
 
+/* Slow, subtle zoom on the visible slide */
 .hero-image img.active {
   opacity: 1;
+  transform: scale(1.06);
 }
 
 /* ==========================================================================
@@ -88,7 +91,6 @@
   gap: 1.5rem; /* Balanced gap between introduction text and cards */
   text-align: center;
   align-items: center;
-  margin-bottom: -2rem; /* Pulls the next section closer to shorten the gap */
 }
 
 .intro-who {
@@ -105,7 +107,9 @@
 
 /* Specific styling to make Mission and Vision boxes larger */
 .mission-vision-grid .card {
-  padding: 1rem 1rem; /* Enhanced internal whitespace for a premium look */
+  padding: 1.5rem 1.75rem;
+  border-top: 3px solid var(--c-accent);
+  text-align: left; /* Enhanced internal whitespace for a premium look */
   font-size: 1.1rem;     /* Increased paragraph sizing for clarity */
 }
 
@@ -118,23 +122,60 @@
 /* ==========================================================================
    3. IMPACT GRID SECTION
    ========================================================================== */
-section:has(.impact-grid) {
-  padding-top: 1rem !important; /* Compresses top spacing explicitly */
+/* Flex so the last row of counters sits centred instead of hanging left */
+.impact-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.impact-grid {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+.impact-grid > * {
+  flex: 0 1 calc((100% - 4rem) / 5);
 }
 
 .impact-card {
-  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+  padding: 1.25rem 1rem 1.4rem;
   text-align: center;
+}
+
+.impact-card.reveal {
+  transform: translateY(16px) scale(0.92);
+}
+
+.impact-card.reveal.show {
+  transform: none;
+}
+
+/* Amber bar fills along the bottom while the number counts up (counter.js adds .counted) */
+.impact-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--c-primary), var(--c-accent));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.impact-card.counted::after {
+  transform: scaleX(1);
+}
+
+.impact-card:hover h3 {
+  color: var(--c-accent);
 }
 
 .impact-card h3 {
   margin: 0;
-  font-size: 1.6rem;
+  font-size: 1.85rem;
   color: var(--c-primary);
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s ease;
 }
 
 .impact-card p {
@@ -146,7 +187,7 @@ section:has(.impact-grid) {
    4. PARTNERS CAROUSEL STRIP
    ========================================================================== */
 .partner-strip {
-  padding: 2.5rem 0 4.5rem 0;
+  padding: 0 0 var(--space-xl);
   background-color: var(--white);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -154,8 +195,8 @@ section:has(.impact-grid) {
   overflow: hidden;
 }
 
-.partner-header {
-  margin-bottom: 2.5rem;
+.intro-who.section-head {
+  margin-bottom: 0;
 }
 
 .partners-link {
@@ -180,16 +221,38 @@ section:has(.impact-grid) {
   transform: translateX(6px);
 }
 
+.partner-marquee {
+  display: grid;
+  gap: 1.25rem;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.partner-row {
+  overflow: hidden;
+}
+
 .partner-track {
   display: flex;
-  gap: 2rem;
   width: max-content;
-  animation: partnerSlide 26s linear infinite;
+  animation: partnerSlide 70s linear infinite;
+}
+
+.partner-track.track-right {
+  animation-direction: reverse;
+  animation-duration: 80s;
+}
+
+/* padding-right equals the gap so -50% lands exactly on the second set */
+.partner-set {
+  display: flex;
+  gap: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .partner-logo {
-  width: 200px;
-  height: 100px;
+  width: 180px;
+  height: 90px;
   padding: 0.5rem;
   border: 1px solid var(--c-border);
   border-radius: 10px;
@@ -197,7 +260,7 @@ section:has(.impact-grid) {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .partner-logo a {
@@ -209,19 +272,26 @@ section:has(.impact-grid) {
 }
 
 .partner-logo img {
-  max-height: 80px;
-  max-width: 180px;
+  max-height: 70px;
+  max-width: 160px;
   object-fit: contain;
   margin: 0;
-  transition: transform 0.3s ease;
+  filter: grayscale(0.85);
+  opacity: 0.75;
+  transition: filter 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
 }
 
 .partner-logo:hover {
-  transform: scale(1.05);
+  transform: translateY(-3px);
+  border-color: var(--c-accent);
+  box-shadow: 0 10px 22px rgba(15, 110, 86, 0.1);
 }
 
-.partner-logo img:hover {
-  transform: scale(1.1);
+.partner-logo:hover img,
+.partner-logo a:focus-visible img {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.06);
 }
 
 @keyframes partnerSlide {
@@ -233,8 +303,8 @@ section:has(.impact-grid) {
    5. RESPONSIVE BREAKPOINTS
    ========================================================================== */
 @media (max-width: 1040px) {
-  .impact-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .impact-grid > * {
+    flex-basis: calc((100% - 2rem) / 3);
   }
 }
 
@@ -245,13 +315,103 @@ section:has(.impact-grid) {
     grid-template-columns: 1fr;
   }
 
-  .impact-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .impact-grid > * {
+    flex-basis: calc((100% - 1rem) / 2);
   }
 }
 
 @media (max-width: 520px) {
-  .impact-grid {
+  .impact-grid > * {
+    flex-basis: 100%;
+  }
+}
+/* Pause the partner marquee when a visitor hovers or tabs into it */
+.partner-row:hover .partner-track,
+.partner-track:focus-within {
+  animation-play-state: paused;
+}
+
+/* ==========================================================================
+   6. STORIES OF CHANGE + GET INVOLVED CTA
+   ========================================================================== */
+.stories-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.story-card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.story-card img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.story-card:hover img {
+  transform: scale(1.04);
+}
+
+.story-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.story-body h3 {
+  font-size: 1.15rem;
+  color: var(--c-primary-strong);
+}
+
+.story-tag {
+  color: var(--c-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.story-link {
+  margin-top: auto;
+  color: var(--c-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.story-link:hover {
+  color: var(--c-accent);
+}
+
+.involve-cta {
+  margin-top: 2rem;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.involve-cta h3 {
+  color: var(--c-primary-strong);
+}
+
+.involve-cta p {
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .stories-grid {
     grid-template-columns: 1fr;
+  }
+
+  .involve-cta {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

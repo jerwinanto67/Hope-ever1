@@ -39,17 +39,12 @@
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: var(--ff-body);
       background-color: var(--background);
       color: var(--text-primary);
       line-height: 1.7;
     }
 
-    .container {
-      width: 90%;
-      max-width: 1250px;
-      margin: auto;
-    }
 
     img {
       width: 100%;
@@ -61,12 +56,12 @@
     ========================================= */
 
     .hero-section {
-      height: 85vh;
+      min-height: 68vh;
 
       background:
         linear-gradient(
-          rgba(0, 0, 0, 0.55),
-          rgba(0, 0, 0, 0.55)
+          rgba(0, 0, 0, 0.15),
+          rgba(0, 0, 0, 0.15)
         ),
 
         url("https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=1600&auto=format&fit=crop")
@@ -304,10 +299,10 @@
       z-index: 0;
       pointer-events: none;
       background: linear-gradient(
-        135deg,
-        rgba(3, 24, 18, 0.82) 0%,
-        rgba(8, 52, 40, 0.72) 45%,
-        rgba(0, 0, 0, 0.78) 100%
+        90deg,
+        rgba(3, 24, 18, 0.86) 0%,
+        rgba(8, 52, 40, 0.62) 50%,
+        rgba(0, 0, 0, 0.2) 100%
       );
     }
 
@@ -377,11 +372,14 @@
       <a href="../projects.html" data-nav="projects">Projects</a>
       <a href="../programs.html" data-nav="programs">Programs &amp; Initiatives</a>
       <a href="../gallery.html" data-nav="gallery">Gallery</a>
+      <a href="../get-involved.html" data-nav="involved">Get Involved</a>
       <a href="../contact.html" data-nav="contact">Contact Us</a>
     </nav>
   </div>
 
 </header>
+
+  <main id="main-content">
 
  <section class="hero-section">
 
@@ -612,10 +610,12 @@
     </div>
 
   </section>
+  </main>
+
   <footer class="site-footer">
   <div class="container footer-grid">
     <section class="footer-col footer-brand-col">
-      <img src="../assets/images/common/circular_logo-removebg-preview.png" alt="Hope Ever Foundation logo" class="footer-logo" />
+      <img loading="lazy" decoding="async" src="../assets/images/common/circular_logo-removebg-preview.png" alt="Hope Ever Foundation logo" class="footer-logo" />
       <p class="footer-tagline">Empowering marginalized communities through sustainable livelihoods, education, and dignity.</p>
     </section>
 
@@ -636,13 +636,13 @@
       <h3>Social &amp; External</h3>
       <div class="footer-socials" aria-label="Social and external links">
         <a href="https://instagram.com/hopeeverfoundation" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <img src="../assets/images/icons/instagram.svg" alt="Instagram icon" />
+          <img loading="lazy" decoding="async" src="../assets/images/icons/instagram.svg" alt="Instagram icon" />
         </a>
         <a href="mailto:contact@hopeever.org" aria-label="Email">
-          <img src="../assets/images/icons/mail.svg" alt="Email icon" />
+          <img loading="lazy" decoding="async" src="../assets/images/icons/mail.svg" alt="Email icon" />
         </a>
         <a href="tel:+910000000000" aria-label="Phone">
-          <img src="../assets/images/icons/phone.svg" alt="Phone icon" />
+          <img loading="lazy" decoding="async" src="../assets/images/icons/phone.svg" alt="Phone icon" />
         </a>
       </div>
     </section>
@@ -655,7 +655,7 @@
   </div>
 </footer>
 
-  <script src="../js/navbar.js"></script>
-  <script src="../js/main.js"></script>
+  <script src="../js/navbar.js" defer></script>
+  <script src="../js/main.js" defer></script>
 </body>
 </html>

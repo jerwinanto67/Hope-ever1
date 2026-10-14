@@ -163,3 +163,68 @@
   .map-svg { width: 160px; }
   .chip { font-size: 0.75rem; padding: 0.3rem 0.7rem; }
 }
+
+/* Get Involved (expression of interest) form */
+.form-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 0.8rem;
+}
+
+.choice-group {
+  border: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.5rem;
+}
+
+.choice-group legend {
+  width: 100%;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--c-primary-strong);
+  margin-bottom: 0.3rem;
+}
+
+.contact-form .choice-group label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 500;
+  color: var(--c-text);
+  cursor: pointer;
+}
+
+.contact-form .choice-group input {
+  width: auto;
+  accent-color: var(--c-primary);
+}
+
+.contact-form button[disabled] {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.contact-panel-stack {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+
+.contact-panel h2 {
+  font-size: 1.2rem;
+  color: var(--c-primary-strong);
+}
+
+.steps {
+  margin: 0 0 0.8rem;
+  padding-left: 1.2rem;
+  color: var(--c-muted);
+}
+
+@media (max-width: 600px) {
+  .form-cols {
+    grid-template-columns: 1fr;
+  }
+}

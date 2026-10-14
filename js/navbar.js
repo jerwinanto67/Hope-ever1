@@ -8,22 +8,48 @@ window.initNavbar = function initNavbar() {
     return;
   }
 
+  const setMenu = function (open) {
+    nav.classList.toggle('open', open);
+    document.body.classList.toggle('nav-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+  };
+
   const navLinks = nav.querySelectorAll('a[data-nav]');
   navLinks.forEach(function (link) {
     if (link.getAttribute('data-nav') === currentPage) {
       link.classList.add('active');
+      link.setAttribute('aria-current', 'page');
     }
 
     link.addEventListener('click', function () {
-      nav.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
+      setMenu(false);
     });
   });
 
-  toggle.addEventListener('click', function () {
-    const expanded = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!expanded));
-    nav.classList.toggle('open');
+  toggle.addEventListener('click', function (event) {
+    event.stopPropagation();
+    setMenu(!nav.classList.contains('open'));
+  });
+
+  // Close on Escape, on a tap outside the panel, or when the screen grows to desktop width
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && nav.classList.contains('open')) {
+      setMenu(false);
+      toggle.focus();
+    }
+  });
+
+  document.addEventListener('click', function (event) {
+    if (nav.classList.contains('open') && !nav.contains(event.target)) {
+      setMenu(false);
+    }
+  });
+
+  window.matchMedia('(min-width: 1201px)').addEventListener('change', function (mq) {
+    if (mq.matches) {
+      setMenu(false);
+    }
   });
 
   const setScrollState = function () {
@@ -31,7 +57,7 @@ window.initNavbar = function initNavbar() {
   };
 
   setScrollState();
-  window.addEventListener('scroll', setScrollState);
+  window.addEventListener('scroll', setScrollState, { passive: true });
 
   const backToTopButton = document.querySelector('.back-to-top');
   if (backToTopButton) {
@@ -40,4 +66,3 @@ window.initNavbar = function initNavbar() {
     });
   }
 };
-

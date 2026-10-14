@@ -1,5 +1,6 @@
+// Shared by the Contact and Get Involved forms (any form posting to Web3Forms).
 window.initContactForm = function initContactForm() {
-  const form = document.querySelector('#contact-form');
+  const form = document.querySelector('form[action*="web3forms"]');
   const feedback = document.querySelector('#form-feedback');
   if (!form || !feedback) {
     return;
@@ -8,22 +9,19 @@ window.initContactForm = function initContactForm() {
   form.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    const name = form.querySelector('[name="name"]').value.trim();
-    const email = form.querySelector('[name="email"]').value.trim();
-    const message = form.querySelector('[name="message"]').value.trim();
-
-    if (!name || !email || !message) {
-      feedback.textContent = 'Please fill in Name, Email, and Message before submitting.';
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      feedback.textContent = 'Please fill in all required fields before submitting.';
       feedback.className = 'error';
       return;
     }
 
-    const formData = new FormData(form);
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
+    const button = form.querySelector('[type="submit"]');
+    const json = JSON.stringify(Object.fromEntries(new FormData(form)));
 
-    feedback.textContent = "Sending your message...";
-    feedback.className = "";
+    feedback.textContent = 'Sending...';
+    feedback.className = '';
+    button.disabled = true;
 
     fetch('https://api.web3forms.com/submit', {
       method: 'POST',
@@ -33,14 +31,24 @@ window.initContactForm = function initContactForm() {
       },
       body: json
     })
-    .then(async (response) => {
-      feedback.textContent = "Thank you! Your message has been sent successfully.";
-      feedback.className = 'success';
-      form.reset();
-    })
-    .catch(error => {
-      feedback.textContent = "Oops! Something went wrong. Please try again later.";
-      feedback.className = 'error';
-    });
+      .then(function (response) {
+        return response.json().then(function (data) {
+          if (!response.ok || !data.success) {
+            throw new Error(data.message || 'Submission failed');
+          }
+        });
+      })
+      .then(function () {
+        feedback.textContent = form.dataset.success || 'Thank you! Your message has been sent successfully.';
+        feedback.className = 'success';
+        form.reset();
+      })
+      .catch(function () {
+        feedback.textContent = 'Sorry, something went wrong. Please try again or email us at contact@hopeever.org.';
+        feedback.className = 'error';
+      })
+      .finally(function () {
+        button.disabled = false;
+      });
   });
 };
