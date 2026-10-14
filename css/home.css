@@ -139,14 +139,48 @@ section:has(.impact-grid) {
 }
 
 .impact-card {
-  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+  padding: 1.25rem 1rem 1.4rem;
   text-align: center;
+}
+
+.impact-card.reveal {
+  transform: translateY(16px) scale(0.92);
+}
+
+.impact-card.reveal.show {
+  transform: none;
+}
+
+/* Amber bar fills along the bottom while the number counts up (counter.js adds .counted) */
+.impact-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--c-primary), var(--c-accent));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.impact-card.counted::after {
+  transform: scaleX(1);
+}
+
+.impact-card:hover h3 {
+  color: var(--c-accent);
 }
 
 .impact-card h3 {
   margin: 0;
-  font-size: 1.6rem;
+  font-size: 1.85rem;
   color: var(--c-primary);
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s ease;
 }
 
 .impact-card p {
@@ -192,16 +226,38 @@ section:has(.impact-grid) {
   transform: translateX(6px);
 }
 
+.partner-marquee {
+  display: grid;
+  gap: 1.25rem;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.partner-row {
+  overflow: hidden;
+}
+
 .partner-track {
   display: flex;
-  gap: 2rem;
   width: max-content;
-  animation: partnerSlide 26s linear infinite;
+  animation: partnerSlide 70s linear infinite;
+}
+
+.partner-track.track-right {
+  animation-direction: reverse;
+  animation-duration: 80s;
+}
+
+/* padding-right equals the gap so -50% lands exactly on the second set */
+.partner-set {
+  display: flex;
+  gap: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .partner-logo {
-  width: 200px;
-  height: 100px;
+  width: 180px;
+  height: 90px;
   padding: 0.5rem;
   border: 1px solid var(--c-border);
   border-radius: 10px;
@@ -209,7 +265,7 @@ section:has(.impact-grid) {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .partner-logo a {
@@ -221,19 +277,26 @@ section:has(.impact-grid) {
 }
 
 .partner-logo img {
-  max-height: 80px;
-  max-width: 180px;
+  max-height: 70px;
+  max-width: 160px;
   object-fit: contain;
   margin: 0;
-  transition: transform 0.3s ease;
+  filter: grayscale(0.85);
+  opacity: 0.75;
+  transition: filter 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
 }
 
 .partner-logo:hover {
-  transform: scale(1.05);
+  transform: translateY(-3px);
+  border-color: var(--c-accent);
+  box-shadow: 0 10px 22px rgba(15, 110, 86, 0.1);
 }
 
-.partner-logo img:hover {
-  transform: scale(1.1);
+.partner-logo:hover img,
+.partner-logo a:focus-visible img {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.06);
 }
 
 @keyframes partnerSlide {
@@ -268,7 +331,7 @@ section:has(.impact-grid) {
   }
 }
 /* Pause the partner marquee when a visitor hovers or tabs into it */
-.partner-strip:hover .partner-track,
+.partner-row:hover .partner-track,
 .partner-track:focus-within {
   animation-play-state: paused;
 }
