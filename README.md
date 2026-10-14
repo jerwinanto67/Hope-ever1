@@ -1,384 +1,132 @@
-# Hope Ever Foundation — Website Project
+# Hope Ever Foundation — Website
 
-LIVE @ - https://hopeever.org/
+Official website of **Hope Ever Foundation**, a non-profit trust working with
+marginalized communities across Tamil Nadu, India.
 
-
-A static multi-page website for Hope Ever Foundation, a registered non-profit
-operating across 14 districts of Tamil Nadu since 2012.
-
----
-
-## Tech Stack
-
-- Plain HTML5, CSS3, Vanilla JavaScript — no frameworks, no build tools
-- Font: Google Fonts
-- Icons: SVGs in assets/images/icons
-- Hosting: Vercel
+**Live site:** https://hopeever.org
 
 ---
 
-## Color Palette
+## About Hope Ever Foundation
 
-| Token            | Value     | Usage                          |
-|------------------|-----------|--------------------------------|
-| Primary Green    | #0F6E56   | Navbar, headings, buttons      |
-| Accent Amber     | #D4872A   | Highlights, tags, CTAs         |
-| Background       | #F9F6F1   | Page background (warm off-white)|
-| Text Primary     | #1A1A1A   | Body text                      |
-| Text Secondary   | #5A5A5A   | Captions, meta info            |
-| White            | #FFFFFF   | Cards, footer columns          |
-| Border           | #E2DDD6   | Card borders, dividers         |
+Hope Ever Foundation is a registered non-profit established in **2012** under the
+**Indian Trust Act, 1882** (Reg. No. 63/12). For over a decade it has worked across
+**14 districts of Tamil Nadu** to empower Scheduled Castes, Scheduled Tribes, women
+and youth through sustainable livelihoods, education, child rights and
+environmental conservation, combining grassroots community engagement with
+evidence-based planning and strong institutional partnerships.
 
-Define all as CSS variables in css/global.css under :root { }
+**Mission:** To raise awareness and build community capacity for environmental
+conservation and economic self-reliance.
 
----
+**Vision:** To ensure sustainable livelihoods for marginalized populations through
+eco-friendly practices such as organic agriculture and renewable energy.
 
-## Page Structure
+### What the foundation does
 
-### Pages (root level)
-| File           | Page              | Notes                            |
-|----------------|-------------------|----------------------------------|
-| index.html     | Home              | Hero, who we are, mission/vision, impact counters, partner strip |
-| about.html     | About Us          | History, team, map, recognition, partners |
-| projects.html  | Projects          | 12 project cards with sector filter |
-| programs.html  | Programs          | 5 thematic program areas         |
-| gallery.html   | Gallery           | Year filter tabs + lightbox grid |
-| contact.html   | Contact Us        | Form + map + address             |
-| get-involved.html | Get Involved   | Volunteer / internship expression-of-interest form (Web3Forms) |
-| 404.html       | Not Found         | Friendly error page              |
+| Program area | Focus |
+|---|---|
+| Community Outreach & Awareness | Health, sanitation, education, tribal welfare and social-inclusion campaigns |
+| Livelihood Promotion & Rural Development | Organic farming, millets and value-added products, solar and rural enterprise |
+| Skill Development & Employability | NSDC-partnered vocational, handicraft and entrepreneurship training |
+| Women & Community Empowerment | SHG strengthening, women-led micro-enterprises, financial literacy |
+| Research, Capacity Building & Participatory Planning | Field studies, assessments and planning with communities and government |
 
-### Individual Project Pages (projects/ folder)
-Each file is a full detail page for one project.
+### Impact so far
 
-| File                      | Project Name                                      |
-|---------------------------|---------------------------------------------------|
-| javvadhu-hills.html       | Land Holding & Horticulture, Javvadhu Hills       |
-| agri-training.html        | Sustainable Agriculture, Organic Farming & Livestock Program |
-| surabi-magalir.html       | Surabi Magalir Membattu Iyakkam                   |
-| kolping-india.html        | Kolping India Project                             |
-| nsdc-skill.html           | NSDC Handicraft & Skill Development               |
-| child-rights.html         | Child Rights Awareness (CECOWOR & ACA Denmark)    |
-| women-skill.html          | Women Empowerment through Skill Development       |
-| agarbatti.html            | Core Employability & Add-on Programs (EDII)       |
+450+ youth trained in skill development · 200+ farmers moved to organic farming ·
+500+ SC/ST youth trained · 300+ women trained in trades and enterprise ·
+20+ villages with Child Rights Clubs · 14 districts · 13+ years of operation
 
----
+### Recognition
 
-## CSS Architecture
+- Approval order under Form 10AB of the Income Tax Act
+- Empanelment with the Ministry of Textiles (3 years)
+- State Medicinal Plants Board (SMPB) certificate
 
-All pages link stylesheets in this order:
-  1. css/global.css      — variables, reset, typography (ALWAYS FIRST)
-  2. css/navbar.css      — shared navbar styles
-  3. css/footer.css      — shared footer styles
-  4. css/[page].css      — page-specific styles
-  5. css/animations.css  — scroll reveal, counters, transitions
+### Partners
 
-### css/global.css must define:
-- :root color variables
-- :root font-size and spacing scale
-- CSS reset (box-sizing, margin, padding)
-- Base typography (h1–h6, p, a)
-- Utility classes (.container, .section, .btn, .tag)
-- Responsive breakpoints as comments for reference
+NITI Aayog · NABARD · TAHDCO · NSDC · ASCI · EDII · Ministry of AYUSH ·
+DC Handicrafts · National Medicinal Plants Board · Ministry of Tribal Welfare ·
+Arise Investment · Skill Council for Green Jobs · CECOWOR · Accenture
+
+### Contact
+
+- **Address:** No. 41, Anna Nedunchalai, Kandanchavadi, Chennai 600096, Tamil Nadu, India
+- **Phone:** +91 04446517039
+- **Email:** contact@hopeever.org
+- **Facebook:** https://www.facebook.com/p/Hope-Ever-Foundation-100079969281675/
+
+Want to help? Volunteers and interns can apply through the
+[Get Involved](https://hopeever.org/get-involved.html) page.
 
 ---
 
-## JS Architecture
+## About this website
 
-| File               | Responsibility                                              |
-|--------------------|-------------------------------------------------------------|
-| main.js            | Initialises all modules, shared utilities                   |
-| navbar.js          | Mobile hamburger menu, sticky scroll, active link highlight |
-| counter.js         | Animated number counters on homepage (IntersectionObserver) |
-| gallery.js         | Year tab filter + lightbox viewer                           |
-| projects.js        | Sector filter tabs on projects.html                         |
-| contact.js         | Form validation and submission feedback                     |
-| scroll-reveal.js   | Fade-in on scroll using IntersectionObserver                |
+A fast, static, multi-page site: plain HTML, CSS and vanilla JavaScript, with
+**no framework and no build step**. Hosted on Vercel.
 
-Load all JS at bottom of <body> with defer attribute.
-navbar.js and main.js load on every page.
-Other files load only on the page that needs them.
+### Pages
 
----
+| File | Page |
+|---|---|
+| `index.html` | Home: hero slider, who we are, stories of change, impact numbers, partners |
+| `about.html` | History, team, district map, recognition, partner table |
+| `projects.html` | Project cards with sector filters |
+| `projects/*.html` | One detail page per project (9 projects) |
+| `programs.html` | The five program areas |
+| `gallery.html` | Photo gallery with category filters and lightbox |
+| `get-involved.html` | Volunteer / internship expression-of-interest form |
+| `contact.html` | Contact form, details and map |
+| `404.html` | Not-found page |
 
-## Components
+### Folder structure
 
-components/navbar.html and components/footer.html hold the shared HTML.
-Inject them into every page using fetch() in main.js like this:
+```
+assets/       images (gallery, partners, icons, logo), district map data
+components/   shared navbar and footer snippets
+css/          global.css (tokens, layout, motion) + one file per page
+docs/         certificates and policy PDFs
+js/           main.js (language switcher, transitions, cursor, loaders)
+              navbar.js, counter.js, scroll-reveal.js, gallery.js,
+              projects.js, contact.js, map.js
+```
 
-  fetch('/components/navbar.html')
-    .then(r => r.text())
-    .then(html => document.getElementById('navbar-placeholder').innerHTML = html)
+### Features
 
-Every page HTML file must have:
-  <div id="navbar-placeholder"></div>   ← at top of body
-  <div id="footer-placeholder"></div>   ← at bottom of body
+- **Speed:** compressed images, lazy loading, deferred scripts; Google Translate
+  only loads when a visitor picks a language
+- **Responsive:** tested from 375px phones to wide desktops; slide-in mobile menu
+- **Language switcher:** English, Tamil, Hindi, Telugu, Malayalam, Kannada
+- **Smooth experience:** page transitions, image placeholders, subtle scroll
+  reveals, animated impact counters, two-row partner marquee
+- **Forms:** Contact and Get Involved forms submit through Web3Forms
+- **Accessibility:** semantic landmarks, labelled form fields, keyboard-friendly
+  menus, visible focus, and all motion switched off for visitors who prefer
+  reduced motion
 
----
+### Brand
 
-## Image Guidelines
+| Token | Value | Use |
+|---|---|---|
+| Primary green | `#0F6E56` | Headings, buttons, navigation |
+| Accent amber | `#D4872A` | Highlights, labels, accents |
+| Background | `#F9F6F1` | Warm off-white page background |
+| Text | `#1A1A1A` / `#5A5A5A` | Body text / secondary text |
 
-| Folder                        | Content                        | Format | Notes                        |
-|-------------------------------|--------------------------------|--------|------------------------------|
-| assets/images/common/         | Logo, hero, favicon, og-image  | PNG/JPG| og-image must be 1200×630px  |
-| assets/images/partners/       | Partner org logos              | PNG    | Transparent bg, ~80px height |
-| assets/images/projects/[name] | cover, thumb, img-01, img-02   | JPG    | cover: 1200×600, thumb: 600×400 |
-| assets/images/gallery/[year]/ | Event photos by category       | JPG    | Name: YYYY-category-NN.jpg   |
-| assets/images/team/           | Staff headshots                | JPG    | Square crop, consistent size |
-| assets/images/icons/          | Social + UI SVG icons          | SVG    | Inline-friendly SVGs         |
-| assets/certificates/          | Certificate preview thumbnails | JPG    | Shown on About page          |
+Fonts: **Merriweather** (headings) and **Manrope** (body), via Google Fonts.
 
-Naming rules — always lowercase, hyphens only, no spaces:
-  GOOD:  organic-farm-training-01.jpg
-  BAD:   Organic Farm Training 1.JPG
-  BAD:   organic_farm_training_1.jpg
+### Run locally
 
----
+Any static file server works. With Python installed:
 
-## Docs Folder
+```bash
+python -m http.server 8000
+```
 
-| File                    | Purpose                                   |
-|-------------------------|-------------------------------------------|
-| 70000000138821621_178297321_2025_EXM_AABTH1701L_Form_10AB_Approval_Order_1086322525_1__21022026[22013].pdf | Income Tax Approval Order (10AB) |
-| certificate_of_empanalment_3year_issued.png | Ministry of Textiles Empanelment Certificate |
-| smpb-certificate.pdf    | State Medicinal Plants Board Certificate  |
-| annual-report-2023.pdf  | Annual report (update each year)          |
-| terms-and-conditions.pdf| Donor and program participation T&C       |
-
-All PDFs are linked from the About page Recognition section.
-The assets/certificates/ folder holds JPG thumbnail previews of the certificates
-shown visually on the page before the download link.
-
----
-
-## Navbar (persistent — every page)
-
-Links: Home | About Us | Projects | Programs & Initiatives | Gallery | Contact Us
-Logo: assets/images/common/logo.png (dark bg → logo-white.png)
-Behaviour: sticky on scroll, hamburger on mobile, active page highlighted
+Then open http://localhost:8000.
 
 ---
 
-## Footer (persistent — every page)
-
-Five columns:
-  1. Logo + one-line tagline + 80G donation note
-  2. Quick links (all 6 nav pages)
-  3. Contact — address, phone (tel:), email (mailto:)
-  4. Social — Instagram, Facebook, YouTube icons linking externally
-  5. Recognition — 12AA and 80G badge text
-
-Bottom bar: © 2025 Hope Ever Foundation. All rights reserved.
-
-External links to add (fill in actual handles/numbers):
-  Instagram : https://instagram.com/HANDLE
-  Facebook  : https://facebook.com/PAGE
-  YouTube   : https://youtube.com/CHANNEL
-  Email     : mailto:info@hopeeverfoundation.org
-  Phone     : tel:+91XXXXXXXXXX
-  Address   : [Full street address], Tamil Nadu, India
-
----
-
-## Home Page Sections
-
-  1. Hero          — full-width bg image, tagline, 2 CTA buttons
-  2. Who We Are    — short intro paragraph + founding year + trust act note
-  3. Mission       — To raise awareness and build community capacity...
-  4. Vision        — To ensure sustainable livelihoods...
-  5. Impact Numbers— 10 animated counters (see below)
-  6. Partner Strip — scrolling logo strip of 15 partner orgs
-  7. Footer
-
-Impact counter values:
-  1,650+   Youth trained in skill development
-  400+     Farmers transitioned to organic farming
-  50+      Villages with Child Rights Clubs
-  1,480    SC/ST youth trained under NSDC
-  500+     Healthcare (GDA) trainees since 2020
-  85+      Women trained in trades & enterprise
-  14       Districts covered across Tamil Nadu
-  13+      Years of operation
-  30%      Average income increase (NSDC youth)
-  50%      Crop yield increase (organic farmers)
-
----
-
-## About Page Sections
-
-  1. Our History      — founded 2012, Indian Trust Act 1882, decade of work
-  2. Our Team         — 16 professionals, roles listed, headshot grid
-  3. Geographic Cover — Tamil Nadu district list + map visual with 14 pins
-  4. Recognition      — Income Tax 10AB, Ministry of Textiles Empanelment, SMPB Certificate, T&C link
-  5. Our Partners     — table/grid of 15 partner orgs with logo + role description
-
-Districts covered:
-  Chennai, Kanchipuram, Thiruvallur, Thiruvannamalai, Cuddalore, Trichy,
-  Dindigul, Villupuram, Ariyalur, Pondicherry, Pudhukottai, Sivagangai,
-  Namakkal, Kanyakumari
-
----
-
-## Projects Page
-
-Display as a card grid with sector filter tabs at top.
-Each card shows: thumb image, project title, duration, partner, sector tag, short
-excerpt (2 lines), and a "Read More" button linking to projects/[slug].html
-
-Filter tags:
-  All | Livelihoods | Skill Development | Women | Child Rights | Agriculture | M&E | Health
-
-Projects list (slug → title):
-  javvadhu-hills    → Land Holding & Horticulture, Javvadhu Hills   [Agriculture, Livelihoods]
-  agri-training     → Sustainable Agriculture, Organic Farming & Livestock [Agriculture, Livelihoods]
-  surabi-magalir    → Surabi Magalir Membattu Iyakkam                [Women, Livelihoods]
-  kolping-india     → Kolping India Project                          [Livelihoods, Women]
-  nsdc-skill        → NSDC Handicraft & Skill Development            [Skill Development]
-  child-rights      → Child Rights Awareness                         [Child Rights]
-  women-skill       → Women Empowerment through Skill Development    [Women, Skill Development]
-  agarbatti         → Value Added Products using Cow Dung            [Women, Livelihoods]ant]
-
----
-
-## Programs Page
-
-Five thematic sections, each with icon, title, and paragraph:
-
-  1. Monitoring & Evaluation (M&E)
-     Logical frameworks, baseline/endline studies, SIA, SMPs, MIS dashboards,
-     mobile-based data collection, real-time monitoring.
-
-  2. Livelihoods & Enterprise Development
-     Organic farming, solar/biogas enterprises, artisan development
-     (weaving, pottery, folk art), BDS (financial literacy, market access).
-
-  3. Skill Development
-     NSDC & ASCI partnerships, vocational training in tailoring, IT, retail,
-     healthcare (GDA), BFSI, handicrafts, carpentry, renewable energy.
-     Includes soft skills, entrepreneurship, digital literacy, placement support.
-
-  4. Capacity Building
-     SHG training, Child Rights Clubs, youth groups, Panchayati Raj institutions,
-     project staff, duty bearers. Methods: experiential learning, participatory
-     workshops, simulation, digital tools.
-
-  5. Research & Evidence-Based Planning
-     Participatory Rural Appraisals (PRA), FGDs, KIIs, household surveys,
-     statistical analysis, policy research for state and national advocacy.
-
----
-
-## Gallery Page
-
-  - Year filter tabs: 2012–2015 | 2016–2018 | 2019–2020 | 2021 | 2022 | 2023 | 2024 | 2025
-  - Category sub-filter: All | Training | Field Activities | Events | Partner Visits
-  - Layout: Masonry or uniform grid
-  - Click: opens lightbox with prev/next navigation
-  - Images stored in: assets/images/gallery/[year]/[category]/
-
----
-
-## Contact Page
-
-  Form fields:
-    Full Name (text, required)
-    Email (email, required)
-    Phone (tel, optional)
-    Subject (select: Partnership / Volunteer / Donation / Media / General)
-    Message (textarea, required)
-    Submit button
-
-  Also display:
-    Physical address block
-    Phone with tel: link
-    Email with mailto: link
-    Instagram / Facebook / YouTube icon links
-    Embedded Google Map (iframe) of office location
-
----
-
-## SEO Checklist (each page)
-
-  <title>Page Title — Hope Ever Foundation</title>
-  <meta name="description" content="...">
-  <meta property="og:title" content="...">
-  <meta property="og:description" content="...">
-  <meta property="og:image" content="/assets/images/common/og-image.jpg">
-  <meta property="og:type" content="website">
-  <link rel="canonical" href="https://yourdomain.com/page.html">
-  <link rel="icon" href="/assets/images/common/favicon.ico">
-
----
-
-## Accessibility Checklist
-
-  - All images must have descriptive alt="" text
-  - Color contrast ratio minimum 4.5:1 for body text
-  - All form fields have associated <label> elements
-  - Keyboard navigation must work for navbar and lightbox
-  - Use semantic HTML: <header>, <nav>, <main>, <section>, <footer>, <article>
-  - Focus styles must be visible (never remove outline without replacement)
-
----
-
-## Organisation Info (for footer and contact page)
-
-  Name        : Hope Ever Foundation
-  Type        : Non-profit Trust
-  Registered  : Indian Trust Act, 1882
-  Tax Status  : Recognized under Sections 12AA and 80G, Income Tax Act
-  Founded     : 2012
-  Coverage    : 14 districts, Tamil Nadu, India
-  Team Size   : 16 professionals
-
-  !! Replace placeholders below with actual details !!
-  Address     : [INSERT FULL ADDRESS]
-  Phone       : [INSERT PHONE NUMBER]
-  Email       : [INSERT EMAIL ADDRESS]
-  Instagram   : [INSERT HANDLE]
-  Facebook    : [INSERT PAGE URL]
-  YouTube     : [INSERT CHANNEL URL]
-
----
-
-## Partner Organisations
-
-  NITI Aayog                        — Strategic development partnership
-  NABARD                            — Agricultural and rural finance programs
-  TAHDCO                            — SC/ST community development programs
-  NSDC                              — Skill training (6+ year partnership)
-  ASCI                              — Organic farming livelihood program
-  EDII                              — Entrepreneurship and enterprise support
-  Manos Unidas, Spain               — Agricultural Training Center funding
-  Child Aid ACA, Denmark            — Child rights awareness program
-  CECOWOR                           — Child rights project co-implementation
-  BIRDS                             — Women empowerment & youth skill programs
-  Kolping India / Nandri Foundation — Thiruvannamalai rural project
-  SSH, Dindigul                     — Surabi Magalir women's program
-  State Planning Commission, TN     — Javvadhu Hills horticulture assessment
-
----
-
-## Build Order Recommendation
-
-  Start in this order to avoid re-work:
-
-  Step 1  css/global.css         — variables, reset, typography, utilities
-  Step 2  components/navbar.html + css/navbar.css + js/navbar.js
-  Step 3  components/footer.html + css/footer.css
-  Step 4  js/main.js             — fetch and inject navbar + footer
-  Step 5  index.html + css/home.css + js/counter.js + js/scroll-reveal.js
-  Step 6  about.html + css/about.css
-  Step 7  projects.html + css/projects.css + js/projects.js
-  Step 8  Individual project pages (projects/*.html)
-  Step 9  programs.html + css/programs.css
-  Step 10 gallery.html + css/gallery.css + js/gallery.js
-  Step 11 contact.html + css/contact.css + js/contact.js
-  Step 12 404.html
-  Step 13 robots.txt + sitemap.xml
-  Step 14 SEO meta tags pass on all pages
-  Step 15 Accessibility audit pass on all pages
-
----
-
-*README last updated: 2026*
-*Organisation: Hope Ever Foundation, Tamil Nadu, India*
+© 2026 Hope Ever Foundation. All rights reserved.

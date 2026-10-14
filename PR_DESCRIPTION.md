@@ -1,37 +1,54 @@
-# Site enhancements per client brief (speed, responsiveness, content, Get Involved)
+# Hope Ever Foundation website: speed, responsiveness, content and polish
 
-This refines hopeever.org without redesigning it, as the brief asks. Background, fonts, colour palette and visual style are unchanged.
+## About Hope Ever Foundation
 
-## Speed
-- Images recompressed in place with the same filenames: **19.1 MB → 5.8 MB** (photos capped at 1600px, logos at 400px).
-- Below-the-fold images and the map iframe are lazy-loaded.
-- All local scripts use `defer`, and scroll listeners are passive.
-- The contact page no longer loads d3 + map.js, which it never used.
+Hope Ever Foundation is a registered non-profit trust established in 2012 under the Indian Trust Act, 1882. It works across 14 districts of Tamil Nadu to empower Scheduled Castes, Scheduled Tribes, women and youth through sustainable livelihoods, skill development, child rights, community health and environmental conservation. Its partners include NITI Aayog, NABARD, NSDC, TAHDCO, EDII and Accenture. Live site: https://hopeever.org
 
-## Responsiveness / bug fixes
-- **Mobile menu was broken on 5 pages.** About, Contact, Gallery, Programs and Projects were missing `<header class="site-header">`, so `navbar.js` exited early and the hamburger menu and sticky header did nothing.
-- The nav now collapses below 1140px, so the 7 links never wrap onto two lines.
-- The About page partner table no longer overflows phone screens.
-- **The contact form always showed "sent successfully", even when sending failed.** It now checks the Web3Forms response.
-- The contact map showed Adyar. It now shows the Kandanchavadi office.
-- The partner marquee loop was missing Accenture in its second copy, which caused a visible jump. It now pauses on hover and keyboard focus.
+## What this PR does
+
+This follows the client's brief: refine and upgrade the existing site rather than redesign it, keeping its original colours, fonts and classic NGO look while making it faster, more responsive, richer in content and easier to use.
+
+### Speed
+- Images recompressed with the same filenames: **19.1 MB → 5.8 MB**.
+- Lazy loading for below-the-fold images and the map. All scripts are deferred.
+- Google Translate loads only when a visitor picks a language, instead of on every page view.
+- The contact page no longer loads an unused mapping library.
+
+### Bugs fixed
+- **The mobile menu didn't work on 5 pages.** About, Contact, Gallery, Programs and Projects were missing their header tag.
+- **The contact form always said "sent successfully"**, even when sending failed.
+- The contact map pointed to Adyar instead of the Kandanchavadi office.
+- The partner logo strip jumped at the end of each loop, and the About page partner table overflowed on phones.
+- The Projects page and project pages used Arial and a different width, so the header shifted between pages.
 - sitemap.xml and robots.txt pointed to the old `hopeeverfoundation.org` domain.
 
-## Content
-- Home page has a new **Stories of Change** section with 3 cards using real photos. The text is drawn from the existing project pages.
-- Project page heroes now use the foundation's own photos instead of Unsplash stock (except Agri-Training, which has no matching photo).
-- **New `get-involved.html`**: an expression-of-interest form for volunteering and internships. It uses the same Web3Forms key as the contact form and is linked from every page's nav and from a home-page CTA.
+### New content
+- **Get Involved page:** a volunteer and internship expression-of-interest form, linked in every page's menu.
+- **Stories of Change** section on the home page, with the foundation's own photos.
+- Project pages use the foundation's own photos instead of stock images.
 
-## Accessibility / motion
-- Respects the visitor's `prefers-reduced-motion` setting, adds a visible focus outline, and keeps animations subtle.
+### Design and motion (subtle, per the brief)
+- **New menu:** amber underline on desktop and "Get Involved" as a button. On phones, a slide-in panel with a dimmed background; the hamburger turns into an ✕.
+- **Language switcher:** a globe button with an animated panel for English, Tamil, Hindi, Telugu, Malayalam and Kannada. Google's banner is hidden.
+- **Impact numbers:** cards pop in, numbers count up with easing, and a progress bar fills under each.
+- **Partners:** two rows drifting in opposite directions with faded edges; logos come to full colour on hover.
+- **Page transitions:** the header stays put while the content fades between pages.
+- **Loading:** shimmer placeholders where images will appear, then a soft fade-in.
+- **Cursor:** a dot with a trailing ring that grows over links (mouse only).
+- **Layout:** consistent section spacing, centred home headings, matching page banners.
+
+### Accessibility
+- Every page has a `<main>` area, labelled form fields, keyboard-friendly menus and a visible focus outline.
+- All animation turns off for visitors who prefer reduced motion.
 
 ## Tested
-- Every page at 375px, 1000px and 1280px: no horizontal scroll, header present, mobile menu opens, no broken images (other than the pre-existing issue below).
+- Every page at 375px, 1000px, 1200px and 1300px+: no sideways scrolling, header aligned, menus open and close.
+- Tamil translation, the language choice carrying across pages, and switching back to English.
+- Gallery image placeholders, and page transitions between pages.
 
-## Needs input from the foundation
-- Real success stories or testimonials (names, quotes, photos) with consent. The current cards only summarise program outcomes.
-- About page: 4 certificate thumbnails in `assets/certificates/` are missing on the live site too.
-- The footer Instagram link is empty (`href=""`), and a handle is marked "to be updated".
-- Photos for the Agri-Training hero.
+## Still needed from the foundation
+- Real testimonials or success stories with names and consent.
+- Four certificate thumbnails on the About page (also missing on the live site).
+- Instagram link (currently empty) and a photo for the Agri-Training project.
 
 🤖 Generated with [Claude Code](https://claude.com/claude-code)
