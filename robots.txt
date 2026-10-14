@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.hopeeverfoundation.org/sitemap.xml
+Sitemap: https://hopeever.org/sitemap.xml

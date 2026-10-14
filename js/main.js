@@ -186,7 +186,7 @@ window.initHeroSlider = function() {
         } else {
             scrollBtn.classList.remove('visible');
         }
-    });
+    }, { passive: true });
 
     // Scroll to top when clicked
     scrollBtn.addEventListener('click', function() {

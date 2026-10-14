@@ -31,7 +31,7 @@ window.initNavbar = function initNavbar() {
   };
 
   setScrollState();
-  window.addEventListener('scroll', setScrollState);
+  window.addEventListener('scroll', setScrollState, { passive: true });
 
   const backToTopButton = document.querySelector('.back-to-top');
   if (backToTopButton) {
