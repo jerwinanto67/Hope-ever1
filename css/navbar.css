@@ -175,3 +175,22 @@ body {
     font-size: 0.95rem;
   }
 }
+
+/* Header tightens slightly once the page scrolls */
+.nav-wrap,
+.brand-logo {
+  transition: min-height 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+.site-header.scrolled {
+  box-shadow: 0 6px 18px rgba(15, 110, 86, 0.06);
+}
+
+.site-header.scrolled .nav-wrap {
+  min-height: 68px;
+}
+
+.site-header.scrolled .brand-logo {
+  width: 52px;
+  height: 52px;
+}
