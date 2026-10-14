@@ -272,6 +272,55 @@ window.initHeroSlider = function() {
 })();
 
 // ============================================
+// SMOOTH LOADING: image placeholders + page-leave fade
+// ============================================
+(function() {
+    // Shimmer placeholder until each lazy image arrives, then fade it in.
+    // Skipped for the hero slider and partner logos, which manage their own opacity.
+    function prepareImages() {
+        document.querySelectorAll('img[loading="lazy"]').forEach(function(img) {
+            if (img.closest('.hero-image, .partner-logo') || (img.complete && img.naturalWidth)) return;
+            img.classList.add('img-pending');
+            const done = function() {
+                img.classList.remove('img-pending');
+                if (img.naturalWidth) img.classList.add('img-loaded');
+            };
+            img.addEventListener('load', done, { once: true });
+            img.addEventListener('error', done, { once: true });
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', prepareImages);
+    } else {
+        prepareImages();
+    }
+
+    // Browsers with cross-page View Transitions animate in CSS; others get a short fade-out here.
+    if (window.CSS && CSS.supports && CSS.supports('selector(::view-transition)')) return;
+
+    document.addEventListener('click', function(event) {
+        const link = event.target.closest && event.target.closest('a[href]');
+        if (!link || event.defaultPrevented || event.button !== 0 ||
+            event.metaKey || event.ctrlKey || event.shiftKey || event.altKey ||
+            link.target === '_blank' || link.hasAttribute('download')) return;
+
+        const url = new URL(link.href, location.href);
+        const samePage = url.pathname === location.pathname && url.search === location.search;
+        if (url.origin !== location.origin || samePage || /\.(pdf|png|jpe?g)$/i.test(url.pathname)) return;
+
+        event.preventDefault();
+        document.documentElement.classList.add('is-leaving');
+        setTimeout(function() { location.href = url.href; }, 220);
+    });
+
+    // Coming back via the back button restores the old page from cache: undo the fade
+    window.addEventListener('pageshow', function(event) {
+        if (event.persisted) document.documentElement.classList.remove('is-leaving');
+    });
+})();
+
+// ============================================
 // CURSOR: soft dot + trailing ring (mouse/trackpad only)
 // ============================================
 (function() {

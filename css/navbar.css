@@ -302,7 +302,7 @@ font[style] {
   box-shadow: none !important;
 }
 
-@media (max-width: 1140px) {
+@media (max-width: 1200px) {
   .translate-widget-wrapper {
     margin-left: auto;
     margin-right: 0.6rem;
@@ -474,4 +474,11 @@ font[style] {
 @keyframes navFade {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+/* Desktop: keep the name on one line; narrow screens may wrap it under the logo */
+@media (min-width: 1201px) {
+  .brand-text {
+    white-space: nowrap;
+  }
 }

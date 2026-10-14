@@ -91,7 +91,6 @@
   gap: 1.5rem; /* Balanced gap between introduction text and cards */
   text-align: center;
   align-items: center;
-  margin-bottom: -2rem; /* Pulls the next section closer to shorten the gap */
 }
 
 .intro-who {
@@ -123,10 +122,6 @@
 /* ==========================================================================
    3. IMPACT GRID SECTION
    ========================================================================== */
-section:has(.impact-grid) {
-  padding-top: 1rem !important; /* Compresses top spacing explicitly */
-}
-
 /* Flex so the last row of counters sits centred instead of hanging left */
 .impact-grid {
   display: flex;
@@ -192,7 +187,7 @@ section:has(.impact-grid) {
    4. PARTNERS CAROUSEL STRIP
    ========================================================================== */
 .partner-strip {
-  padding: 2.5rem 0 4.5rem 0;
+  padding: 0 0 var(--space-xl);
   background-color: var(--white);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -200,8 +195,8 @@ section:has(.impact-grid) {
   overflow: hidden;
 }
 
-.partner-header {
-  margin-bottom: 2.5rem;
+.intro-who.section-head {
+  margin-bottom: 0;
 }
 
 .partners-link {
@@ -339,10 +334,6 @@ section:has(.impact-grid) {
 /* ==========================================================================
    6. STORIES OF CHANGE + GET INVOLVED CTA
    ========================================================================== */
-.stories {
-  padding-bottom: var(--space-lg);
-}
-
 .stories-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;

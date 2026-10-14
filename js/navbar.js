@@ -46,7 +46,7 @@ window.initNavbar = function initNavbar() {
     }
   });
 
-  window.matchMedia('(min-width: 1141px)').addEventListener('change', function (mq) {
+  window.matchMedia('(min-width: 1201px)').addEventListener('change', function (mq) {
     if (mq.matches) {
       setMenu(false);
     }
