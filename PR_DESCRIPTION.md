@@ -49,6 +49,4 @@ This follows the client's brief: refine and upgrade the existing site rather tha
 ## Still needed from the foundation
 - Real testimonials or success stories with names and consent.
 - Four certificate thumbnails on the About page (also missing on the live site).
-- Instagram link (currently empty) and a photo for the Agri-Training project.
-
-🤖 Generated with [Claude Code](https://claude.com/claude-code)
+- Instagram link (currently empty) and a photo for the Agri-Training project
