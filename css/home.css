@@ -255,3 +255,92 @@ section:has(.impact-grid) {
     grid-template-columns: 1fr;
   }
 }
+/* Pause the partner marquee when a visitor hovers or tabs into it */
+.partner-strip:hover .partner-track,
+.partner-track:focus-within {
+  animation-play-state: paused;
+}
+
+/* ==========================================================================
+   6. STORIES OF CHANGE + GET INVOLVED CTA
+   ========================================================================== */
+.stories {
+  padding-bottom: var(--space-lg);
+}
+
+.stories-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.story-card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.story-card img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.story-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.story-body h3 {
+  font-size: 1.15rem;
+  color: var(--c-primary-strong);
+}
+
+.story-tag {
+  color: var(--c-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.story-link {
+  margin-top: auto;
+  color: var(--c-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.story-link:hover {
+  color: var(--c-accent);
+}
+
+.involve-cta {
+  margin-top: 2rem;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.involve-cta h3 {
+  color: var(--c-primary-strong);
+}
+
+.involve-cta p {
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .stories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .involve-cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

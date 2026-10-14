@@ -484,3 +484,18 @@
   color: var(--c-muted);
   margin: 0;
 }
+
+/* Keep the partner table inside the screen on phones */
+@media (max-width: 600px) {
+  .partner-table th,
+  .partner-table td {
+    padding: 0.55rem 0.45rem;
+    font-size: 0.82rem;
+    overflow-wrap: anywhere;
+  }
+
+  .partner-logo-box {
+    width: 56px;
+    height: 38px;
+  }
+}

@@ -44,6 +44,7 @@ Define all as CSS variables in css/global.css under :root { }
 | programs.html  | Programs          | 5 thematic program areas         |
 | gallery.html   | Gallery           | Year filter tabs + lightbox grid |
 | contact.html   | Contact Us        | Form + map + address             |
+| get-involved.html | Get Involved   | Volunteer / internship expression-of-interest form (Web3Forms) |
 | 404.html       | Not Found         | Friendly error page              |
 
 ### Individual Project Pages (projects/ folder)
