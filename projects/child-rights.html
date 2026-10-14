@@ -39,17 +39,12 @@
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: var(--ff-body);
       background-color: var(--background);
       color: var(--text-primary);
       line-height: 1.7;
     }
 
-    .container {
-      width: 90%;
-      max-width: 1250px;
-      margin: auto;
-    }
 
     img {
       width: 100%;
@@ -62,12 +57,12 @@
 
     .hero-section {
 
-      height: 85vh;
+      min-height: 68vh;
 
       background:
         linear-gradient(
-          rgba(0, 0, 0, 0.55),
-          rgba(0, 0, 0, 0.55)
+          rgba(0, 0, 0, 0.15),
+          rgba(0, 0, 0, 0.15)
         ),
 
         url("../assets/images/gallery/WASH_project_2025_with_cecowar.jpeg")
@@ -337,10 +332,10 @@
       z-index: 0;
       pointer-events: none;
       background: linear-gradient(
-        135deg,
-        rgba(3, 24, 18, 0.82) 0%,
-        rgba(8, 52, 40, 0.72) 45%,
-        rgba(0, 0, 0, 0.78) 100%
+        90deg,
+        rgba(3, 24, 18, 0.86) 0%,
+        rgba(8, 52, 40, 0.62) 50%,
+        rgba(0, 0, 0, 0.2) 100%
       );
     }
 
@@ -415,6 +410,8 @@
     </nav>
   </div>
 </header>
+
+  <main id="main-content">
 
   <section class="hero-section">
 
@@ -661,6 +658,8 @@
     </div>
 
   </section>
+  </main>
+
   <footer class="site-footer">
   <div class="container footer-grid">
     <section class="footer-col footer-brand-col">
