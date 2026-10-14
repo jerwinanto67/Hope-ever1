@@ -267,3 +267,100 @@ main {
   translate: 0 -4px;
   box-shadow: 0 16px 34px rgba(15, 110, 86, 0.14);
 }
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  border: 0 !important;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Custom cursor: dot follows the pointer exactly, ring trails behind (see main.js) */
+.has-custom-cursor,
+.has-custom-cursor * {
+  cursor: none !important;
+}
+
+.has-custom-cursor.cursor-native input,
+.has-custom-cursor.cursor-native textarea,
+.has-custom-cursor.cursor-native select,
+.has-custom-cursor.cursor-native iframe {
+  cursor: auto !important;
+}
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  background: var(--c-primary);
+}
+
+.cursor-ring {
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 1.5px solid rgba(15, 110, 86, 0.45);
+}
+
+/* scale lives on an inner layer so it never fights the JS translate */
+.cursor-dot,
+.cursor-ring {
+  transition: opacity 0.25s ease;
+}
+
+.cursor-ring::after {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 50%;
+  background: rgba(212, 135, 42, 0);
+  transition: background 0.3s ease;
+}
+
+.cursor-hover .cursor-ring {
+  width: 54px;
+  height: 54px;
+  margin: -27px 0 0 -27px;
+  border-color: var(--c-accent);
+}
+
+.cursor-hover .cursor-ring::after {
+  background: rgba(212, 135, 42, 0.12);
+}
+
+.cursor-hover .cursor-dot {
+  background: var(--c-accent);
+}
+
+.cursor-press .cursor-ring {
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+}
+
+.cursor-ring {
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1), height 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    margin 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, opacity 0.25s ease;
+}
+
+.cursor-hidden .cursor-dot,
+.cursor-hidden .cursor-ring,
+.cursor-native .cursor-dot,
+.cursor-native .cursor-ring {
+  opacity: 0;
+}
